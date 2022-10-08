@@ -1,5 +1,5 @@
-local sharedItems = exports['qr-core']:GetItems()
 local isBusy = false
+local QRCore = exports['qr-core']:GetCoreObject()
 
 function loadAnimDict(dict, anim)
     while not HasAnimDictLoaded(dict) do Wait(0) RequestAnimDict(dict) end
@@ -39,14 +39,14 @@ RegisterNetEvent("consumables:client:Drink", function(itemName)
             local object = nil
             doAnim("p_mugcoffee01x", "SKEL_R_FINGER12", 0.0, -0.05, 0.03, 0.0, 180.0, 180.0, 'action', 'mech_inventory@drinking@coffee', sleep)
         end
-        exports['qr-core']:Progressbar("drink_something", "Drinking..", sleep, false, true, {
+        QRCore.Functions.Progressbar("drink_something", "Drinking..", sleep, false, true, {
             disableMovement = false,
             disableCarMovement = false,
             disableMouse = false,
             disableCombat = true,
         }, {}, {}, {}, function() -- Done
-            TriggerEvent("inventory:client:ItemBox", sharedItems[itemName], "remove")
-            TriggerServerEvent("QRCore:Server:SetMetaData", "thirst", exports['qr-core']:GetPlayerData().metadata["thirst"] + ConsumeablesDrink[itemName])
+            TriggerEvent("inventory:client:ItemBox", QRCore.Shared.Items[itemName], "remove")
+            TriggerServerEvent("QRCore:Server:SetMetaData", "thirst", QRCore.Functions.GetPlayerData().metadata["thirst"] + ConsumeablesDrink[itemName])
         end)
         ClearPedTasks(PlayerPedId())
         AnimDetatch (sleep)
@@ -76,13 +76,13 @@ RegisterNetEvent("consumables:client:Smoke", function(itemName)
             end
             doAnim(item_model, "SKEL_R_FINGER12", pX, pY, pZ, rX, rY, rZ, 'base', 'amb_wander@code_human_smoking_wander@cigar@male_a@base', sleep)
         end
-        exports['qr-core']:Progressbar("smoking", "Smoking..", sleep, false, true, {
+        QRCore.Functions.Progressbar("smoking", "Smoking..", sleep, false, true, {
             disableMovement = false,
             disableCarMovement = false,
             disableMouse = false,
             disableCombat = true,
         }, {}, {}, {}, function() -- Done
-            TriggerEvent("inventory:client:ItemBox", sharedItems[itemName], "remove")
+            TriggerEvent("inventory:client:ItemBox", QRCore.Shared.Items[itemName], "remove")
             TriggerServerEvent('hud:server:RelieveStress', math.random(20, 40))
         end)
         ClearPedTasks(PlayerPedId())
@@ -103,17 +103,17 @@ RegisterNetEvent("consumables:client:DrinkAlcohol", function(itemName)
         if not IsPedOnMount(PlayerPedId()) and not IsPedInAnyVehicle(PlayerPedId()) then
             doAnim("s_inv_whiskey01x", "SKEL_R_FINGER12", 0.0, -0.05, 0.22, 0.0, 180.0, 180.0, 'base_trans_cheers_putaway', 'mp_mech_inventory@drinking@moonshine@drunk@male_a', sleep)
         end
-        exports['qr-core']:Progressbar("drink_alcohol", "Drinking liquor..", math.random(3000, 6000), false, true, {
+        QRCore.Functions.Progressbar("drink_alcohol", "Drinking liquor..", math.random(3000, 6000), false, true, {
             disableMovement = false,
             disableCarMovement = false,
             disableMouse = false,
             disableCombat = true,
         }, {}, {}, {}, function() -- Done
-            TriggerEvent("inventory:client:ItemBox", sharedItems[itemName], "remove")
+            TriggerEvent("inventory:client:ItemBox", QRCore.Shared.Items[itemName], "remove")
             TriggerServerEvent("QRCore:Server:RemoveItem", itemName, 1)
-            TriggerServerEvent("QRCore:Server:SetMetaData", "thirst", exports['qr-core']:GetPlayerData().metadata["thirst"] + ConsumeablesAlcohol[itemName])
+            TriggerServerEvent("QRCore:Server:SetMetaData", "thirst", QRCore.Functions.GetPlayerData().metadata["thirst"] + ConsumeablesAlcohol[itemName])
         end, function()
-            exports['qr-core']:Notify(9, "Cancelled..", 2000, 0, 'mp_lobby_textures', 'cross')
+            QRCore.Functions.Notify(9, "Cancelled..", 2000, 0, 'mp_lobby_textures', 'cross')
         end)
         Citizen.Wait(sleep)
         if bottle ~= nil then
@@ -137,14 +137,14 @@ RegisterNetEvent("consumables:client:Eat", function(itemName)
             local dict = loadAnimDict('mech_inventory@eating@multi_bite@wedge_a4-2_b0-75_w8_h9-4_eat_cheese')
             TaskPlayAnim(PlayerPedId(), dict, 'quick_right_hand', 5.0, 5.0, -1, 1, false, false, false)
         end
-        exports['qr-core']:Progressbar("eat_something", "Eating..", 5000, false, true, {
+        QRCore.Functions.Progressbar("eat_something", "Eating..", 5000, false, true, {
             disableMovement = false,
             disableCarMovement = false,
             disableMouse = false,
             disableCombat = true,
         }, {}, {}, {}, function() -- Done
-            TriggerEvent("inventory:client:ItemBox", sharedItems[itemName], "remove")
-            TriggerServerEvent("QRCore:Server:SetMetaData", "hunger", exports['qr-core']:GetPlayerData().metadata["hunger"] + ConsumeablesEat[itemName])
+            TriggerEvent("inventory:client:ItemBox", QRCore.Shared.Items[itemName], "remove")
+            TriggerServerEvent("QRCore:Server:SetMetaData", "hunger", QRCore.Functions.GetPlayerData().metadata["hunger"] + ConsumeablesEat[itemName])
             TriggerServerEvent('hud:server:RelieveStress', math.random(2, 4))
         end)
         ClearPedTasks(PlayerPedId())

@@ -1,3 +1,4 @@
+local QRCore = exports['qr-core']:GetCoreObject()
 
 
 local Webhooks = {
@@ -71,6 +72,6 @@ RegisterNetEvent('qr-log:server:CreateLog', function(name, title, color, message
     end
 end)
 
-exports['qr-core']:AddCommand('testwebhook', 'Test Your Discord Webhook For Logs (God Only)', {}, false, function(source, args)
+QRCore.Commands.Add('testwebhook', 'Test Your Discord Webhook For Logs (God Only)', {}, false, function(source, args)
     TriggerEvent('qr-log:server:CreateLog', 'testwebhook', 'Test Webhook', 'default', 'Webhook setup successfully')
 end, 'god')

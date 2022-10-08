@@ -14,6 +14,7 @@
         Citizen.Wait(1)
     end
 end)]]
+local QRCore = exports['qr-core']:GetCoreObject()
 
 RegisterNetEvent('tackle:client:GetTackled')
 AddEventHandler('tackle:client:GetTackled', function()
@@ -24,7 +25,7 @@ AddEventHandler('tackle:client:GetTackled', function()
 end)
 
 function Tackle()
-    closestPlayer, distance = exports['qr-core']:GetClosestPlayer()
+    closestPlayer, distance = QRCore.Functions.GetClosestPlayer()
     local closestPlayerPed = GetPlayerPed(closestPlayer)
     if(distance ~= -1 and distance < 2) then
         TriggerServerEvent("tackle:server:TacklePlayer", GetPlayerServerId(closestPlayer))
@@ -34,7 +35,7 @@ end
 
 function TackleAnim()
     local ped = PlayerPedId()
-    if not exports['qr-core']:GetPlayerData().metadata["ishandcuffed"] and not IsPedRagdoll(ped) then
+    if not QRCore.Functions.GetPlayerData().metadata["ishandcuffed"] and not IsPedRagdoll(ped) then
         RequestAnimDict("swimming@first_person@diving")
         while not HasAnimDictLoaded("swimming@first_person@diving") do
             Citizen.Wait(1)

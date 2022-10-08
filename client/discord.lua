@@ -1,4 +1,5 @@
 -- To Set This Up visit https://forum.cfx.re/t/how-to-updated-discord-rich-presence-custom-image/157686
+local QRCore = exports['qr-core']:GetCoreObject()
 
 Citizen.CreateThread(function()
     while true do
@@ -19,7 +20,7 @@ Citizen.CreateThread(function()
         -- Here you can add hover text for the "small" icon.
         SetDiscordRichPresenceAssetSmallText('This is a lsmall icon with text')
 
-        exports['qr-core']:TriggerCallback('smallresources:server:GetCurrentPlayers', function(result)
+        QRCore.Functions.TriggerCallback('smallresources:server:GetCurrentPlayers', function(result)
             SetRichPresence('Players: '..result..'/64')
         end)
 

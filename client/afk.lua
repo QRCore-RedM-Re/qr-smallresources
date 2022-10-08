@@ -1,11 +1,13 @@
+
 -- AFK Kick Time Limit (in seconds)
 local group = 'user'
 local secondsUntilKick = 1800
+local QRCore = exports['qr-core']:GetCoreObject()
 
 local prevPos, time = nil, nil
 
 RegisterNetEvent('QRCore:Client:OnPlayerLoaded', function()
-    exports['qr-core']:TriggerCallback('qr-afkkick:server:GetPermissions', function(UserGroup)
+    QRCore.Functions.TriggerCallback('qr-afkkick:server:GetPermissions', function(UserGroup)
         group = UserGroup
     end)
 end)
@@ -26,21 +28,21 @@ CreateThread(function()
                         if time ~= nil then
                             if time > 0 then
                                 if time == (900) then
-                                    exports['qr-core']:Notify(9, 'You are AFK and will be kicked in ' .. math.ceil(time / 60) .. ' minutes!', 'error', 10000)
+                                    QRCore.Functions.Notify(9, 'You are AFK and will be kicked in ' .. math.ceil(time / 60) .. ' minutes!', 'error', 10000)
                                 elseif time == (600) then
-                                    exports['qr-core']:Notify(9, 'You are AFK and will be kicked in ' .. math.ceil(time / 60) .. ' minutes!', 'error', 10000)
+                                    QRCore.Functions.Notify(9, 'You are AFK and will be kicked in ' .. math.ceil(time / 60) .. ' minutes!', 'error', 10000)
                                 elseif time == (300) then
-                                    exports['qr-core']:Notify(9, 'You are AFK and will be kicked in ' .. math.ceil(time / 60) .. ' minutes!', 'error', 10000)
+                                    QRCore.Functions.Notify(9, 'You are AFK and will be kicked in ' .. math.ceil(time / 60) .. ' minutes!', 'error', 10000)
                                 elseif time == (150) then
-                                    exports['qr-core']:Notify(9, 'You are AFK and will be kicked in ' .. math.ceil(time / 60) .. ' minutes!', 'error', 10000)
+                                    QRCore.Functions.Notify(9, 'You are AFK and will be kicked in ' .. math.ceil(time / 60) .. ' minutes!', 'error', 10000)
                                 elseif time == (60) then
-                                    exports['qr-core']:Notify(9, 'You are AFK and will be kicked in ' .. math.ceil(time / 60) .. ' minute!', 'error', 10000)
+                                    QRCore.Functions.Notify(9, 'You are AFK and will be kicked in ' .. math.ceil(time / 60) .. ' minute!', 'error', 10000)
                                 elseif time == (30) then
-                                    exports['qr-core']:Notify(9, 'You are AFK and will be kicked in ' .. time .. ' seconds!', 'error', 10000)
+                                    QRCore.Functions.Notify(9, 'You are AFK and will be kicked in ' .. time .. ' seconds!', 'error', 10000)
                                 elseif time == (20) then
-                                    exports['qr-core']:Notify(9, 'You are AFK and will be kicked in ' .. time .. ' seconds!', 'error', 10000)
+                                    QRCore.Functions.Notify(9, 'You are AFK and will be kicked in ' .. time .. ' seconds!', 'error', 10000)
                                 elseif time == (10) then
-                                    exports['qr-core']:Notify(9, 'You are AFK and will be kicked in ' .. time .. ' seconds!', 'error', 10000)
+                                    QRCore.Functions.Notify(9, 'You are AFK and will be kicked in ' .. time .. ' seconds!', 'error', 10000)
                                 end
                                 time = time - 1
                             else

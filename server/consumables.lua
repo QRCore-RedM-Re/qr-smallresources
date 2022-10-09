@@ -2,7 +2,7 @@ local QRCore = exports['qr-core']:GetCoreObject()
 
 -- Drink
 
-QRCore.Functions.CreateUseableItem("water_bottle", function(source, item)
+QRCore.Functions.CreateUseableItem("water", function(source, item)
     local Player = QRCore.Functions.GetPlayer(source)
 	if Player.Functions.RemoveItem(item.name, 1, item.slot) then
         TriggerClientEvent("consumables:client:Drink", source, item.name)

@@ -4,7 +4,7 @@ Config.EnableProne = true
 Config.JointEffectTime = 60
 
 ConsumeablesEat = {
-    ["sandwich"] = math.random(35, 54),
+	["sandwich"] = math.random(35, 54),
     ["apple"] = math.random(10, 25),
     ["cannedbeans"] = math.random(40, 50),
 	["bread"] = math.random(20, 40),
@@ -12,7 +12,7 @@ ConsumeablesEat = {
 }
 
 ConsumeablesDrink = {
-    ["water_bottle"] = math.random(35, 54),
+    ["water"] = math.random(35, 54),
     ["coffee"] = math.random(40, 50),
 }
 

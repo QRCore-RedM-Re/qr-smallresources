@@ -95,7 +95,7 @@ RegisterNetEvent("consumables:client:DrinkAlcohol", function(itemName)
         end
 		Wait(sleep)
 		TriggerEvent("inventory:client:ItemBox", QRCore.Shared.Items[itemName], "remove")
-		TriggerServerEvent("QRCore:Server:RemoveItem", itemName, 1)
+		--TriggerServerEvent("QRCore:Server:RemoveItem", itemName, 1)
 		TriggerServerEvent("QRCore:Server:SetMetaData", "thirst", QRCore.Functions.GetPlayerData().metadata["thirst"] + ConsumeablesAlcohol[itemName])
 		QRCore.Functions.Notify('You drank some alcohol!', 'success')
         Citizen.Wait(sleep)

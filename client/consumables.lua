@@ -98,6 +98,8 @@ RegisterNetEvent("consumables:client:DrinkAlcohol", function(itemName)
 		TriggerServerEvent("QRCore:Server:RemoveItem", itemName, 1)
 		TriggerServerEvent("QRCore:Server:SetMetaData", "thirst", QRCore.Functions.GetPlayerData().metadata["thirst"] + ConsumeablesAlcohol[itemName])
 		QRCore.Functions.Notify('You drank some alcohol!', 'success')
+		end, function()
+                QRCore.Functions.Notify('Cancelled..", 'error')
         Citizen.Wait(sleep)
         if bottle ~= nil then
             DetachEntity(bottle, true, true)

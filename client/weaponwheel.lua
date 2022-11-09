@@ -9,3 +9,4 @@ CreateThread(function()
         DisableControlAction(0, 0xCF8A4ECA, true) -- disable left alt hud | LEFT ALT (fast tapping)
     end
 end)
+end

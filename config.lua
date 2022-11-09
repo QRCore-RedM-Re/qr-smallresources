@@ -3,6 +3,8 @@ Config = {}
 Config.EnableProne = true
 Config.JointEffectTime = 60
 
+Config.DisableWeaponWheel = true
+
 ConsumeablesEat = {
 	["sandwich"] = math.random(35, 54),
     ["apple"] = math.random(10, 25),

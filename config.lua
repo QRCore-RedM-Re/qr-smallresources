@@ -3,7 +3,8 @@ Config = {}
 Config.EnableProne = true
 Config.JointEffectTime = 60
 
-Config.DisableWeaponWheel = true
+
+Config.DisableWeaponWheel = false --// (Set True to Disable Weapon Wheel) Disables weapon wheel and F4 and weapon wheel actions when using scroll wheel
 
 ConsumeablesEat = {
 	["sandwich"] = math.random(35, 54),

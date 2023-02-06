@@ -1,5 +1,3 @@
-
--- AFK Kick Time Limit (in seconds)
 local group = 'user'
 local secondsUntilKick = 1800
 local QRCore = exports['qr-core']:GetCoreObject()
@@ -19,44 +17,28 @@ end)
 CreateThread(function()
     while true do
         Wait(1000)
-        local playerPed = PlayerPedId()
-        if LocalPlayer.state.isLoggedIn then
-            if group == 'user' then
-                currentPos = GetEntityCoords(playerPed, true)
-                if prevPos ~= nil then
-                    if currentPos == prevPos then
-                        if time ~= nil then
-                            if time > 0 then
-                                if time == (900) then
-                                    QRCore.Functions.Notify(9, 'You are AFK and will be kicked in ' .. math.ceil(time / 60) .. ' minutes!', 'error', 10000)
-                                elseif time == (600) then
-                                    QRCore.Functions.Notify(9, 'You are AFK and will be kicked in ' .. math.ceil(time / 60) .. ' minutes!', 'error', 10000)
-                                elseif time == (300) then
-                                    QRCore.Functions.Notify(9, 'You are AFK and will be kicked in ' .. math.ceil(time / 60) .. ' minutes!', 'error', 10000)
-                                elseif time == (150) then
-                                    QRCore.Functions.Notify(9, 'You are AFK and will be kicked in ' .. math.ceil(time / 60) .. ' minutes!', 'error', 10000)
-                                elseif time == (60) then
-                                    QRCore.Functions.Notify(9, 'You are AFK and will be kicked in ' .. math.ceil(time / 60) .. ' minute!', 'error', 10000)
-                                elseif time == (30) then
-                                    QRCore.Functions.Notify(9, 'You are AFK and will be kicked in ' .. time .. ' seconds!', 'error', 10000)
-                                elseif time == (20) then
-                                    QRCore.Functions.Notify(9, 'You are AFK and will be kicked in ' .. time .. ' seconds!', 'error', 10000)
-                                elseif time == (10) then
-                                    QRCore.Functions.Notify(9, 'You are AFK and will be kicked in ' .. time .. ' seconds!', 'error', 10000)
-                                end
-                                time = time - 1
-                            else
-                                TriggerServerEvent('qr-afkkick:server:KickForAFK')
-                            end
-                        else
-                            time = secondsUntilKick
-                        end
-                    else
-                        time = secondsUntilKick
+        if not LocalPlayer.state.isLoggedIn or group ~= 'user' then
+            return
+        end
+        local ped = PlayerPedId()
+        local currentPos = GetEntityCoords(ped, true)
+        if prevPos == currentPos then
+            if time then
+                if time > 10 then
+                    if time % 60 ~= 0 then
+                        return
                     end
+                    QRCore.Functions.Notify(9, 'You are AFK and will be kicked in ' .. time / 60 .. ' minutes!', 'error', 10000)
+                else
+                    QRCore.Functions.Notify(9, 'You are AFK and will be kicked in ' .. time .. ' seconds!', 'error', 10000)
                 end
-                prevPos = currentPos
+                time = time - 1
+                if time <= 0 then
+                    TriggerServerEvent('qr-afkkick:server:KickForAFK')
+                end
             end
+        else
+            prevPos, time = currentPos, secondsUntilKick
         end
     end
 end)

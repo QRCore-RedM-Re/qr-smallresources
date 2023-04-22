@@ -1,48 +1,33 @@
-# qb-smallresources
-Base scripts for QB-Core Framework :building_construction:
+# qr-smallresources
+- QR-Core Base Interactions, Consumables, Blacklisting, Ped Density, and HUD Controls
 
 ## Dependencies
-- [qb-core](https://github.com/QRCore-framework/qb-core)
+- [qr-core](https://github.com/QRCore-framework/qb-core)
 
 ## Features
-- Consumeable foods/beverages/drinks/drugs (sandwich, water_bottle, tosti, beer, vodka etc.)
-- Removal of GTA's default weapons drops
-- Drug effects
-- Removal of GTA's default vehicle spawns (planes, helicopters, emergency vehicles etc.)
-- Removal of GTA's default emergency service npcs
-- Removal of GTA's default wanted system
-- Useable binoculars
-- Weapon draw animations (normal/holster)
-- Ability to add teleport markers (from a place to another place)
-- Taking hostage
-- Pointing animation with finger (by pressing "B")
-- Seatbelt and cruise control
-- Useable parachute
-- Useable armor
-- Weapon recoil (specific to each weapon)
-- Tackle
-- Calm AI (adjusting npc/gang npc aggresiveness)
-- Race Harness
-- /id to see the id
-- Adjusting npc/vehicle/parked vehicle spawn rates
-- Infinite ammo for fire extinguisher and petrol can
-- Removal of GTA's default huds (weapon wheel, cash etc.)
-- Fireworks
-- Automatically engine on after entering vehicle
-- Discord rich presence
-- Crouch and prone
-
-
-
+- AFK Timer
+- Binoculars
+- Hands Up Animation
+- Discord Rich Presence
+- Consumeable foods/beverages/drinks/drugs
+- Blacklist peds/vehicles/scenarios
+- Control Server Ped Density
+- Eagle Eye
+- Control Server HUD Components
+- Edit Weapon Recoil
+- Enable/Disable Weapon Wheel
+- Server logs
 
 ## Installation
-### Manual
-- Download the script and put it in the `[qb]` directory.
-- Add the following code to your server.cfg/resouces.cfg
+- Download the script and put it in the `[qr]` directory.
+- Add the following code to your server.cfg
 ```
-ensure qb-core
-ensure qb-smallresources
+ensure qr-core
+ensure qr-smallresources
 ```
 
-## Configuration
-Each feature has a different file name correlative with its function. You can configure each one by its own.
+## Issues, Suggestions & Support
+* This resource is still in development. All help with improving the resource is encouraged and appreciated
+* Please use the [GitHub](https://github.com/QRCore-RedM-Re) issues system to report issues or make suggestions
+* When making suggestions, please keep `[Suggestion]` in the title to make it clear that it is a suggestion, or join the Discord
+* Discord: https://discord.gg/bEs6cn3225

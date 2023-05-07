@@ -1,7 +1,7 @@
 -- To Set This Up visit https://forum.cfx.re/t/how-to-updated-discord-rich-presence-custom-image/157686
 local QRCore = exports['qr-core']:GetCoreObject()
 
-Citizen.CreateThread(function()
+CreateThread(function()
     while true do
         -- This is the Application ID (Replace this with you own)
 	    SetDiscordAppId()
@@ -35,6 +35,6 @@ Citizen.CreateThread(function()
         SetDiscordRichPresenceAction(1, "Second Button!", "fivem://connect/localhost:30120")
 
         -- It updates every minute just in case.
-	    Citizen.Wait(60000)
+	    Wait(60000)
     end
 end)

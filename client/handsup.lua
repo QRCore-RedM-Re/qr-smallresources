@@ -1,7 +1,7 @@
 
 CreateThread(function()
     while true do
-        Citizen.Wait(7)
+        Wait(7)
         if IsControlJustPressed(0, 0x8CC9CD42) then -- x
             local playerPed = PlayerPedId()
             if not IsEntityDead(playerPed) and not Citizen.InvokeNative(0x9682F850056C9ADE, playerPed) then
@@ -12,7 +12,7 @@ CreateThread(function()
                         RequestAnimDict(animDict)
 
                         while not HasAnimDictLoaded(animDict) do
-                            Citizen.Wait(0)
+                            Wait(0)
                         end
                     end
 
@@ -23,5 +23,5 @@ CreateThread(function()
                 end
             end
         end
-    end        
+    end
 end)

@@ -1,13 +1,40 @@
 local QRCore = exports['qr-core']:GetCoreObject()
 
-QRCore.Commands.Add("id", "Check Your ID #", {}, false, function(source)
-	TriggerClientEvent('QRCore:Notify', source, 9,  "ID: "..source, 5000, 0, 'blips', 'blip_radius_search', 'COLOR_WHITE')
-end)
-
 QRCore.Functions.CreateCallback('smallresources:server:GetCurrentPlayers', function(source, cb)
     local TotalPlayers = 0
     for k, v in pairs(QRCore.Functions.GetQRPlayers()) do
         TotalPlayers = TotalPlayers + 1
     end
     cb(TotalPlayers)
+end)
+
+-- Check if Entity is Blacklisted --
+local function BlacklistedEntity(ENTITY)
+    local eType = GetEntityType(ENTITY)
+    local ePop  = GetEntityPopulationType(ENTITY)
+    local eModel = GetEntityModel(ENTITY)
+    local callback = false
+
+    if eType == 2 then -- Remove Boats
+        if ePop ~= 7 and ePop ~= 8 then
+            local VehicleType = GetVehicleType(ENTITY)
+            if VehicleType == 'boat' then
+                return true
+            end
+        end
+    end
+
+    for q,_ in pairs(Config.BlacklistEntities) do -- Remove Blacklisted
+        if Config.BlacklistEntities[eModel] then
+            print('Removing Blacklisted Entity: '..eModel)
+            callback = true
+            break
+        end
+    end
+    return callback
+end
+
+-- Prevent Boats, Blacklisted Vehicles, Peds, Objects from Spawning --
+AddEventHandler('entityCreating', function(ENTITY)
+    if BlacklistedEntity(ENTITY) then CancelEvent() end
 end)

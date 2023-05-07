@@ -1,3 +1,6 @@
+QRCore = exports['qr-core']:GetCoreObject()
+Keys = QRCore.Shared.Keybinds
+
 -- https://vespura.com/doc/natives/?_0xC116E6DF68DCE667
 --[[
 ------------------------------
@@ -17,33 +20,33 @@
 1 = show
 2 = hide
 ------------------------------
+--]]
 
---]] Citizen.CreateThread(function()
+function IsAimCamActive()
+    return Citizen.InvokeNative(0x698F456FB909E077)
+end
 
-    -- Citizen.InvokeNative(0xC116E6DF68DCE667, 0, 2) -- ICON_STAMINA / HIDE
-    -- Citizen.InvokeNative(0xC116E6DF68DCE667, 1, 2) -- ICON_STAMINA_CORE / HIDE
-
-    Citizen.InvokeNative(0xC116E6DF68DCE667, 2, 2) -- ICON_DEADEYE / HIDE
-    Citizen.InvokeNative(0xC116E6DF68DCE667, 3, 2) -- ICON_DEADEYE_CORE / HIDE
-
-    -- Citizen.InvokeNative(0xC116E6DF68DCE667, 4, 2) -- ICON_HEALTH / HIDE
-    -- Citizen.InvokeNative(0xC116E6DF68DCE667, 5, 2) -- ICON_HEALTH_CORE / HIDE
-
-    -- Citizen.InvokeNative(0xC116E6DF68DCE667, 6, 2) -- ICON_HORSE_HEALTH / HIDE
-    -- Citizen.InvokeNative(0xC116E6DF68DCE667, 7, 2) -- ICON_HORSE_HEALTH_CORE / HIDE
-
-    -- Citizen.InvokeNative(0xC116E6DF68DCE667, 8, 2) -- ICON_HORSE_STAMINA / HIDE
-    -- Citizen.InvokeNative(0xC116E6DF68DCE667, 9, 2) -- ICON_HORSE_STAMINA_CORE / HIDE
-
-    -- Citizen.InvokeNative(0xC116E6DF68DCE667, 10, 2) -- ICON_HORSE_COURAGE / HIDE
-    -- Citizen.InvokeNative(0xC116E6DF68DCE667, 11, 2) -- ICON_HORSE_COURAGE_CORE / HIDE
-
+-- Hide HUD Components --
+CreateThread(function()
+    for x = 1, #Config.HUD do
+        if Config.HUD[x] then
+            Citizen.InvokeNative(0xC116E6DF68DCE667, x, 2)
+        end
+    end
 end)
 
+-- Disable Controls --
 CreateThread(function()
     while true do
         Wait(3)
-        -- Left ALT | Fast Tapping
-        DisableControlAction(0, 0xCF8A4ECA, true) -- Disables LEFT ALT HUD to hide Standalone RDR2 Money/Gold and Bar thingy at the bottom
+        DisableControlAction(0, Keys['LALT'], true) -- Disables LEFT ALT HUD to hide Standalone RDR2 Money/Gold and Bar thingy at the bottom
+        if Config.DisableFastMoveAiming then -- Disable Moving Fast While Aiming
+            if IsAimCamActive() == 1 then
+                DisableControlAction(0, Keys['SHIFT'], true)
+            end
+        end
+        if Config.DisableWeaponWheel then
+            DisableControlAction(0, Keys['TAB'], true) -- Disable weapon wheel | TAB (while holding)
+        end
     end
 end)

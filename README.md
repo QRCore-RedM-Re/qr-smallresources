@@ -2,7 +2,9 @@
 - QR-Core Base Interactions, Consumables, Blacklisting, Ped Density, and HUD Controls
 
 ## Dependencies
-- [qr-core](https://github.com/QRCore-framework/qb-core)
+- [qr-core](https://github.com/QRCore-RedM-Re/qr-core)
+- [events](https://github.com/darktrovx/events) | Base Events Listener by @darktrovx
+- [ox_lib](https://github.com/overextended/ox_lib)
 
 ## Features
 - AFK Timer
@@ -19,6 +21,7 @@
 - Server logs
 
 ## Installation
+- Download ALL Dependencies
 - Download the script and put it in the `[qr]` directory.
 - Add the following code to your server.cfg
 ```

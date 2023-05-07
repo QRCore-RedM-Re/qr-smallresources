@@ -1,10 +1,34 @@
 Config = {}
 
 Config.EnableProne = true
-Config.JointEffectTime = 60
+Config.StuckWagons = 3 -- How often to delete stuck wagons ( Set in Seconds )
+Config.DisableFastMoveAiming = true -- When aiming, pressing shift allows you to move faster. Disable that here
+Config.DisableWeaponWheel = false -- True to Disable Weapon Wheel | Disables weapon wheel and F4 and weapon wheel actions when using scroll wheel
+Config.TogglePVP = false -- Toggle PVP using a key (Prevent random fights/tackling around friendly players)
 
+-- Ped / Animals / Vehicle Density --
+Config.Density = {
+    pedFrequency = 1.0,
+    trafficFrequency = 0.3,
+    animalFrequency = 1.0,
+}
 
-Config.DisableWeaponWheel = false --// (Set True to Disable Weapon Wheel) Disables weapon wheel and F4 and weapon wheel actions when using scroll wheel
+-- Hide HUD Components --
+-- true = hide
+Config.HUD = {
+    [0] = false, -- ICON_STAMINA
+    [1] = false, -- ICON_STAMINA_CORE
+    [2] = true, -- ICON_DEADEYE
+    [3] = true, -- ICON_DEADEYE_CORE
+    [4] = false, -- ICON_HEALTH
+    [5] = false, -- ICON_HEALTH_CORE
+    [6] = false, -- ICON_HORSE_HEALTH
+    [7] = false, -- ICON_HORSE_HEALTH_CORE
+    [8] = false, -- ICON_HORSE_STAMINA
+    [9] = false, -- ICON_HORSE_STAMINA_CORE
+    [10] = false, -- ICON_HORSE_COURAGE
+    [11] = false -- ICON_HORSE_COURAGE_CORE
+}
 
 ConsumeablesEat = {
 	["sandwich"] = math.random(35, 54),
@@ -39,28 +63,25 @@ Config.BlacklistedScenarios = {
     }
 }
 
-Config.BlacklistedVehicles = {
-    -- These need more in them which are appropriate to blacklist
+-- Blacklist Peds, Vehicles and Objects --
+Config.BlacklistEntities = {
+
+    -- Vehicles --
     [`gatling_gun`] = true,
     [`gatlingMaxim02`] = true,
     [`breach_cannon`] = true,
     [`hotchkiss_cannon`] = true,
-    [`policeWagongatling01x`] = true
-    
-}
+    [`policeWagongatling01x`] = true,
 
-Config.BlacklistedPeds = {
-    -- These are GTA peds, these need changing
+    -- Ped Models --
     [`s_m_y_ranger_01`] = true,
     [`s_m_y_sheriff_01`] = true,
     [`s_m_y_cop_01`] = true,
     [`s_f_y_sheriff_01`] = true,
     [`s_f_y_cop_01`] = true,
     [`s_m_y_hwaycop_01`] = true,
-}
 
-Config.BlacklistedObjects = {
-    -- These are GTA props, these need changing
+    -- Object Models --
     [`prop_sec_barier_02b`] = true,
     [`prop_sec_barier_02a`] = true
 }

@@ -24,12 +24,9 @@ local function BlacklistedEntity(ENTITY)
         end
     end
 
-    for q,_ in pairs(Config.BlacklistEntities) do -- Remove Blacklisted
-        if Config.BlacklistEntities[eModel] then
-            print('Removing Blacklisted Entity: '..eModel)
-            callback = true
-            break
-        end
+    if Config.BlacklistEntities[eModel] then -- Remove Blacklisted
+        print('Removing Blacklisted Entity: '..eModel)
+        callback = true
     end
     return callback
 end

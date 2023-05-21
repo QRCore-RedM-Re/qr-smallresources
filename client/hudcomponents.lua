@@ -1,3 +1,4 @@
+Keys = QRCore.Shared.GetKey({ 'LALT', 'SHIFT', 'TAB', 'X', '8' })
 -- https://vespura.com/doc/natives/?_0xC116E6DF68DCE667
 --[[
 ------------------------------
@@ -36,14 +37,14 @@ end)
 CreateThread(function()
     while true do
         Wait(3)
-        DisableControlAction(0, QRCore.Shared.GetKey('LALT'), true) -- Disables LEFT ALT HUD to hide Standalone RDR2 Money/Gold and Bar thingy at the bottom
+        DisableControlAction(0, Keys['LALT'], true) -- Disables LEFT ALT HUD to hide Standalone RDR2 Money/Gold and Bar thingy at the bottom
         if Config.DisableFastMoveAiming then -- Disable Moving Fast While Aiming
             if IsAimCamActive() == 1 then
-                DisableControlAction(0, QRCore.Shared.GetKey('SHIFT'), true)
+                DisableControlAction(0, Keys['SHIFT'], true)
             end
         end
         if Config.DisableWeaponWheel then
-            DisableControlAction(0, QRCore.Shared.GetKey('TAB'), true) -- Disable weapon wheel | TAB (while holding)
+            DisableControlAction(0, Keys['TAB'], true) -- Disable weapon wheel | TAB (while holding)
         end
     end
 end)

@@ -12,7 +12,7 @@ CreateThread(function()
         end
 
         if Config.TogglePVP then
-            if IsControlJustReleased(0, QRCore.Shared.GetKey('8')) then
+            if IsControlJustReleased(0, Keys['8']) then
                 PVP = not PVP
                 if RELATION == 5 then
                     Citizen.InvokeNative(0xB8DE69D9473B7593, cache.ped, 6) -- Disable Choking

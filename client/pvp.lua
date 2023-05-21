@@ -1,20 +1,24 @@
 local PVP, RELATION = true, 5
-local shown = false
+local sleep, shown = 10, false
 CreateThread(function()
     while true do
-        Wait(1)
+        Wait(sleep)
 
         if GetRelationshipBetweenGroups(`PLAYER`, `PLAYER`) ~= RELATION then
             NetworkSetFriendlyFireOption(PVP)
             SetRelationshipBetweenGroups(RELATION, `PLAYER`, `PLAYER`)
+        else
+            if not Config.TogglePVP then sleep = 1000 end
         end
 
         if Config.TogglePVP then
-            if IsControlJustReleased(0, Keys['8']) then
+            if IsControlJustReleased(0, QRCore.Shared.GetKey('8')) then
                 PVP = not PVP
                 if RELATION == 5 then
+                    Citizen.InvokeNative(0xB8DE69D9473B7593, cache.ped, 6) -- Disable Choking
                     RELATION = 1 -- Respect
                 else
+                    Citizen.InvokeNative(0x949B2F9ED2917F5D, cache.ped, 6) -- Enable Choking
                     RELATION = 5 -- Hate
                 end
             end

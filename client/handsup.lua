@@ -1,8 +1,7 @@
-
 CreateThread(function()
     while true do
         Wait(7)
-        if IsControlJustPressed(0, 0x8CC9CD42) then -- x
+        if IsControlJustPressed(0, QRCore.Shared.GetKey('X')) then -- x
             local playerPed = PlayerPedId()
             if not IsEntityDead(playerPed) and not Citizen.InvokeNative(0x9682F850056C9ADE, playerPed) then
                 local animDict = "script_proc@robberies@homestead@lonnies_shack@deception"

@@ -1,6 +1,3 @@
-local QRCore = exports['qr-core']:GetCoreObject()
-
-
 local Webhooks = {
     ['default'] = '',
     ['testwebhook'] = '',

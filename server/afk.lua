@@ -1,5 +1,4 @@
-
-local QRCore = exports['qr-core']:GetCoreObject()
+QRCore = exports['qr-core']:GetCoreObject()
 
 RegisterNetEvent('qr-afkkick:server:KickForAFK', function()
     local src = source

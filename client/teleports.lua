@@ -13,7 +13,7 @@ function DrawText3Ds(x, y, z, text)
     local factor = (string.len(text)) / 150
 end
 
-Citizen.CreateThread(function()
+CreateThread(function()
     while true do
         local sleep = 3
         local ped = PlayerPedId()

@@ -1,5 +1,3 @@
-local QRCore = exports['qr-core']:GetCoreObject()
-
 QRCore.Functions.CreateCallback('smallresources:server:GetCurrentPlayers', function(source, cb)
     local TotalPlayers = 0
     for k, v in pairs(QRCore.Functions.GetQRPlayers()) do

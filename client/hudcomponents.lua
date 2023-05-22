@@ -1,6 +1,4 @@
-QRCore = exports['qr-core']:GetCoreObject()
-Keys = QRCore.Shared.Keybinds
-
+Keys = QRCore.Shared.GetKey({ 'LALT', 'SHIFT', 'TAB', 'X', '8' })
 -- https://vespura.com/doc/natives/?_0xC116E6DF68DCE667
 --[[
 ------------------------------

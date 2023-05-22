@@ -1,6 +1,3 @@
-QRCore = exports['qr-core']:GetCoreObject()
-Keys = QRCore.Shared.Keybinds
-
 -- Blacklisted Scenarios --
 CreateThread(function()
     while true do

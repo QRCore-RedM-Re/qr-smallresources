@@ -1,5 +1,4 @@
 local isBusy = false
-local QRCore = exports['qr-core']:GetCoreObject()
 
 function loadAnimDict(dict, anim)
     while not HasAnimDictLoaded(dict) do Wait(0) RequestAnimDict(dict) end

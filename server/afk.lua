@@ -1,5 +1,3 @@
-QRCore = exports['qr-core']:GetCoreObject()
-
 RegisterNetEvent('qr-afkkick:server:KickForAFK', function()
     local src = source
 	DropPlayer(src, 'You Have Been Kicked For Being AFK')

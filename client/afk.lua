@@ -1,5 +1,3 @@
-QRCore = exports['qr-core']:GetCoreObject()
-
 -- AFK Kick Time Limit (in seconds)
 local group = 'user'
 local secondsUntilKick = 1800

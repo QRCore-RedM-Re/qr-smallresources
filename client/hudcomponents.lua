@@ -1,4 +1,4 @@
-Keys = QRCore.Shared.GetKeys({ 'LALT', 'SHIFT', 'TAB', 'X', '8' })
+Keys = QRCore.Shared.GetKey({ 'LALT', 'SHIFT', 'TAB', 'X', '8' })
 -- https://vespura.com/doc/natives/?_0xC116E6DF68DCE667
 --[[
 ------------------------------

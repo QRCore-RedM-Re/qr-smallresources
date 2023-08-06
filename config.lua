@@ -30,25 +30,6 @@ Config.HUD = {
     [11] = false -- ICON_HORSE_COURAGE_CORE
 }
 
-ConsumeablesEat = {
-	["sandwich"] = math.random(35, 54),
-    ["apple"] = math.random(10, 25),
-    ["cannedbeans"] = math.random(40, 50),
-	["bread"] = math.random(20, 40),
-	["chocolate"] = math.random(30, 50),
-}
-
-ConsumeablesDrink = {
-    ["water"] = math.random(35, 54),
-    ["coffee"] = math.random(40, 50),
-}
-
-ConsumeablesAlcohol = {
-    ["whiskey"] = math.random(20, 30),
-    ["beer"] = math.random(30, 40),
-    ["vodka"] = math.random(20, 40),
-}
-
 Config.BlacklistedScenarios = {
     -- These are all from GTA, these need changing
     ['TYPES'] = {
@@ -109,3 +90,7 @@ Config.Teleports = {
 --         },
 --     },
 }
+
+--------------------------------------------
+
+QRCore = exports['qr-core']:GetCoreObject()

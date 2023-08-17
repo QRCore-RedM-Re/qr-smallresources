@@ -13,7 +13,7 @@ end)
 
 -- Remove Frozen Carriages/Horses (OneSync Fix) --
 CreateThread(function()
-    while true do Wait(10)
+    while true do
         local Pool = GetGamePool('CVehicle')
         for i = 1, #Pool do
             Wait(10)
@@ -22,8 +22,9 @@ CreateThread(function()
             local Horse = Citizen.InvokeNative(0xA8BA0BAE0173457B, Pool[i], 0)
             local Driver = Citizen.InvokeNative(0x2963B5C1637E8A27, Pool[i])
             local Walking = IsPedWalking(Horse)
+            local Running = IsPedRunning(Horse)
             if Veh and Stopped then
-                if Walking then
+                if Walking or Running then
                     if Driver ~= PlayerPedId() then
                         if Driver then DeleteEntity(Driver) end
                         DeleteEntity(Pool[i])
